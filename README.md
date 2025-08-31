@@ -30,5 +30,5 @@ kiprah-santri/
 ## 🚀 Cara Menjalankan
 1. Clone repo ini:
    ```bash
-   git clone https://github.com/USERNAME/kiprah-santri.git
+   git clone https://github.com/abuwahono-stack/kiprah-santri.git
    cd kiprah-santri
