@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Kiprah Santri Bustanul Ulum</title>
+    <style>
+        /* --- Reset & Pengaturan Dasar --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigasi --- */
+        .header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 1rem 0;
+            border-bottom: 3px solid #007bff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 20px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+        
+        /* --- Menu Hamburger untuk Mobile --- */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        #menu-checkbox {
+            display: none;
+        }
+
+        /* --- Konten Section Umum --- */
+        .page-header {
+            background-color: #e9ecef;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+
+        .content-section {
+            padding: 60px 20px;
+            background-color: #fff;
+        }
+        
+        .profil-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profil-content img.main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profil-section {
+            margin-bottom: 40px;
+        }
+        
+        .profil-section h2 {
+            font-size: 1.8rem;
+            color: #343a40;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .profil-section p, .profil-section li {
+            font-size: 1.1rem;
+            color: #555;
+            text-align: justify;
+        }
+        
+        .visi-misi {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .visi-misi h3 {
+            font-size: 1.4rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .visi-misi ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #007bff;
+        }
+        
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        /* --- Media Query untuk Responsif --- */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 22px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                padding: 20px 0;
+                background-color: #fff;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            #menu-checkbox:checked ~ .nav-menu {
+                max-height: 500px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .visi-misi {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Kiprah Santri</a>
+            </div>
+            
+            <input type="checkbox" id="menu-checkbox">
+            <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
+
+            <nav class="nav-menu">
+                <ul>
+                    <!-- Ganti link ke halaman yang sesuai -->
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="profil.html" class="active">Profil</a></li>
+                    <li><a href="artikel.html">Artikel</a></li>
+                    <li><a href="puisi.html">Puisi</a></li>
+                    <li><a href="fiksi.html">Fiksi</a></li>
+                    <li><a href="foto.html">Foto</a></li>
+                    <li><a href="video.html">Video</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ====== Page Header ====== -->
+        <section class="page-header">
+            <h1>Profil Bustanul Ulum</h1>
+        </section>
+
+        <!-- ====== KONTEN PROFIL ====== -->
+        <section class="content-section">
+            <div class="profil-content">
+                
+                <!-- Ganti <svg> dengan tag <img> untuk foto utama pesantren -->
+                <svg class="main-image" width="100%" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto Gedung Pesantren" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em" text-anchor="middle">Foto Gedung Pesantren</text>
+                </svg>
+
+                <!-- Sejarah -->
+                <div class="profil-section">
+                    <h2>Sejarah Singkat</h2>
+                    <p>
+                        Tuliskan sejarah berdirinya Pondok Pesantren Bustanul Ulum di sini. Ceritakan tentang para pendiri, tonggak-tonggak sejarah penting, serta perkembangan dari masa ke masa. Jelaskan filosofi dan nilai-nilai dasar yang menjadi landasan pesantren sejak awal didirikan hingga saat ini. Paragraf ini bisa diperpanjang sesuai dengan kekayaan sejarah yang dimiliki.
+                    </p>
+                </div>
+
+                <!-- Visi dan Misi -->
+                <div class="profil-section">
+                    <h2>Visi & Misi</h2>
+                    <div class="visi-misi">
+                        <div class="visi">
+                            <h3>Visi</h3>
+                            <p>
+                                Menjadi lembaga pendidikan Islam yang unggul dalam mencetak generasi yang agamis, cerdas, mandiri, dan mampu bersaing di tingkat global dengan berlandaskan Al-Qur'an dan As-Sunnah.
+                            </p>
+                        </div>
+                        <div class="misi">
+                            <h3>Misi</h3>
+                            <ul>
+                                <li>Menyelenggarakan pendidikan yang mengintegrasikan ilmu agama dan ilmu umum secara seimbang.</li>
+                                <li>Membentuk karakter santri yang berakhlakul karimah, bertanggung jawab, dan adaptif.</li>
+                                <li>Mengembangkan potensi, minat, dan bakat santri melalui kegiatan ekstrakurikuler yang terarah.</li>
+                                <li>Membekali santri dengan keterampilan hidup (life skills) dan kewirausahaan.</li>
+                                <li>Menciptakan lingkungan pesantren yang aman, nyaman, dan kondusif untuk belajar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Struktur Organisasi -->
+                <div class="profil-section">
+                    <h2>Struktur Organisasi</h2>
+                    <p>
+                        Di bagian ini, Anda dapat menjelaskan struktur kepengurusan di Bustanul Ulum. Anda bisa menampilkannya dalam bentuk daftar atau jika memungkinkan, membuat diagram/bagan organisasi.
+                    </p>
+                    <ul>
+                        <li><strong>Pimpinan Pesantren:</strong> [Nama Pimpinan]</li>
+                        <li><strong>Kepala Madrasah Aliyah:</strong> [Nama Kepala Sekolah]</li>
+                        <li><strong>Kepala Madrasah Tsanawiyah:</strong> [Nama Kepala Sekolah]</li>
+                        <li><strong>Kepala Kepesantrenan:</strong> [Nama Kepala]</li>
+                        <li>Dan seterusnya...</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Beranda</a>
+                <a href="profil.html">Profil</a>
+                <a href="kontak.html">Kontak</a>
+            </div>
+            <p>&copy; 2025 Kiprah Santri Bustanul Ulum. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
