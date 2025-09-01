@@ -77,3 +77,21 @@ nav ul li a:hover {
     display: block;
   }
 }
+.hero {
+  position: relative;
+  text-align: center;
+  color: #0a4d68; /* biru tua */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0a4d68; /* teks judul biru tua */
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.8); /* bayangan putih lembut */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #14532d; /* hijau tua */
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
+}
