@@ -1,300 +1,431 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiprah Santri Bustanul Ulum</title>
-  <style>
-    <link rel="stylesheet" href="style.css">
-    /* ====== Global Styles ====== */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f8fafc;
-  color: #1e293b;
-  line-height: 1.6;
-}
+  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiprah Santri Bustanul Ulum</title>
+    <style>
+        /* --- Reset & Pengaturan Dasar --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-a {
-  color: #2563eb;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-a:hover {
-  color: #1d4ed8;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
 
-/* ====== Header & Navbar ====== */
-header {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-  padding: 1rem 2rem;
-  text-align: center;
-}
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-}
+        /* --- Header & Navigasi --- */
+        .header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 1rem 0;
+            border-bottom: 3px solid #007bff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-nav {
-  background: #1e293b;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-nav a {
-  color: white;
-  padding: 0.8rem 1.2rem;
-  display: block;
-  font-weight: 500;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-nav a:hover {
-  background: #334155;
-  border-radius: 5px;
-}
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
 
-/* ====== Section Styling ====== */
-section {
-  padding: 3rem 2rem;
-  max-width: 1100px;
-  margin: auto;
-}
+        .nav-menu li {
+            margin-left: 20px;
+        }
 
-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  border-left: 5px solid #2563eb;
-  padding-left: 10px;
-  color: #1e293b;
-}
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-/* ====== Card Layout ====== */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+        
+        /* --- Menu Hamburger untuk Mobile --- */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        #menu-checkbox {
+            display: none;
+        }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+        /* --- Hero Section (Selamat Datang) --- */
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 86, 179, 0.7)), url('https://via.placeholder.com/1500x800.png/E8F0FE/333333?text=Latar+Belakang+Pesantren') no-repeat center center/cover;
+            color: #fff;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
 
-.card h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-  color: #2563eb;
-}
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+        }
 
-/* ====== Footer ====== */
-footer {
-  background: #1e293b;
-  color: #e2e8f0;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
+        /* --- Slogan Section --- */
+        .slogan {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-bottom: 1px solid #e7e7e7;
+        }
 
-/* ====== Responsive ====== */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.5rem;
-  }
+        .slogan-text {
+            color: #555;
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 500;
+            word-spacing: 5px;
+        }
+        
+        .slogan-text span {
+            margin: 0 10px;
+            display: inline-block;
+        }
 
-  nav {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+        /* --- Konten Section Umum --- */
+        .content-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        
+        .content-section:nth-child(even) {
+            background-color: #ffffff;
+        }
 
-    /* === STYLE ASLI DIPERTAHANKAN (sama persis) === */
-    /* saya ringkas biar tidak kepanjangan jawaban */
-    /* ... salin CSS dari file Tuan di atas tanpa diubah ... */
-  </style>
+        .content-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #007bff;
+        }
+
+        /* --- Galeri Foto --- */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .photo-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #ddd;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .photo-item svg, .photo-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-caption {
+            padding: 15px;
+            background-color: #fff;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #007bff;
+        }
+        
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        /* --- Media Query untuk Responsif --- */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 22px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                padding: 20px 0;
+                background-color: #fff;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            #menu-checkbox:checked ~ .nav-menu {
+                max-height: 500px; /* Cukup besar untuk semua item menu */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .slogan-text span {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ====== HEADER ====== -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="logo">
-        <a href="#beranda">Kiprah Santri</a>
-      </div>
-      <input type="checkbox" id="menu-checkbox">
-      <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#beranda" class="active">Beranda</a></li>
-          <li><a href="#profil">Profil</a></li>
-          <li><a href="#artikel">Artikel</a></li>
-          <li><a href="#puisi">Puisi</a></li>
-          <li><a href="#fiksi">Fiksi</a></li>
-          <li><a href="#foto">Foto</a></li>
-          <li><a href="#video">Video</a></li>
-          <li><a href="#kontak">Kontak</a></li>
-          <li><a href="#privacy">Privacy Policy</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- ====== BERANDA ====== -->
-    <section id="beranda" class="hero">
-      <h1>Assalamualaikum Warahmatullahi Wabarakatuh</h1>
-      <p>Selamat datang di portal digital Kiprah Santri Bustanul Ulum. 
-      Wadah kreasi, inspirasi, dan informasi dari para santri untuk dunia.</p>
-    </section>
-
-    <!-- ====== SLOGAN ====== -->
-    <section class="slogan">
-      <div class="container">
-        <p class="slogan-text">
-          <span>Agamis</span> •
-          <span>Cerdas</span> •
-          <span>Mandiri</span> •
-          <span>Bertanggung Jawab</span> •
-          <span>Adaptif</span> •
-          <span>Terampil</span> •
-          <span>Berdaya Saing</span>
-        </p>
-      </div>
-    </section>
-
-    <!-- ====== PROFIL ====== -->
-    <section id="profil" class="content-section">
-      <div class="container">
-        <h2>Profil</h2>
-        <p>[Tulis sejarah, visi, misi, atau narasi umum di sini]</p>
-        <ul>
-          <li><strong>Didirikan:</strong> 2015</li>
-          <li><strong>Lokasi:</strong> Way Kanan, Lampung</li>
-          <li><strong>Kegiatan:</strong> Pendidikan Formal & Nonformal</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ====== ARTIKEL ====== -->
-    <section id="artikel" class="content-section">
-      <div class="container">
-        <h2>Artikel Terbaru</h2>
-        <div class="photo-gallery">
-          <div class="photo-item">
-            <div class="photo-caption">
-              <a href="artikel1.html">Kiprah Santri di Era Digital</a><br>
-              <small>Ringkasan singkat artikel...</small>
+    <!-- ====== HEADER ====== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <!-- Ganti dengan tag <img> untuk logo Anda -->
+                <!-- Contoh: <img src="path/to/your/logo.png" alt="Logo Bustanul Ulum" style="height: 40px;"> -->
+                <a href="#beranda">Kiprah Santri</a>
             </div>
-          </div>
-          <div class="photo-item">
-            <div class="photo-caption">
-              <a href="artikel2.html">Makna Kitab Kuning bagi Generasi Muda</a><br>
-              <small>Ringkasan singkat artikel...</small>
+            
+            <input type="checkbox" id="menu-checkbox">
+            <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#beranda" class="active">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#artikel">Artikel</a></li>
+                    <li><a href="#puisi">Puisi</a></li>
+                    <li><a href="#fiksi">Fiksi</a></li>
+                    <li><a href="#foto">Foto</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ====== BERANDA / HERO SECTION ====== -->
+        <section id="beranda" class="hero">
+            <h1>Assalamualaikum Warahmatullahi Wabarakatuh</h1>
+            <p>Selamat datang di portal digital Kiprah Santri Bustanul Ulum. Wadah kreasi, inspirasi, dan informasi dari para santri untuk dunia.</p>
+        </section>
+
+        <!-- ====== SLOGAN SECTION ====== -->
+        <section class="slogan">
+            <div class="container">
+                <p class="slogan-text">
+                    <span>Agamis</span> •
+                    <span>Cerdas</span> •
+                    <span>Mandiri</span> •
+                    <span>Bertanggung Jawab</span> •
+                    <span>Adaptif</span> •
+                    <span>Terampil</span> •
+                    <span>Berdaya Saing</span>
+                </p>
             </div>
-          </div>
+        </section>
+
+        <!-- ====== PROFIL SECTION ====== -->
+        <section id="profil" class="content-section">
+            <div class="container">
+                <h2>Profil</h2>
+                <p>Di sini Anda dapat menulis tentang sejarah, visi, misi, dan informasi umum mengenai Santri Bustanul Ulum. Jelaskan tujuan dari website ini dan siapa saja yang berada di baliknya.</p>
+            </div>
+        </section>
+
+        <!-- ====== ARTIKEL SECTION ====== -->
+        <section id="artikel" class="content-section">
+            <div class="container">
+                <h2>Artikel Terbaru</h2>
+                <p>Bagian ini akan menampilkan daftar artikel-artikel terbaru. Anda bisa membuat daftar link atau kartu-kartu pratinjau artikel di sini.</p>
+            </div>
+        </section>
+
+        <!-- ====== PUISI SECTION ====== -->
+        <section id="puisi" class="content-section">
+            <div class="container">
+                <h2>Kumpulan Puisi</h2>
+                <p>Tempat untuk memamerkan karya-karya puisi dari para santri. Setiap puisi bisa ditampilkan dalam format teks yang indah.</p>
+            </div>
+        </section>
+        
+        <!-- ====== FIKSI SECTION ====== -->
+        <section id="fiksi" class="content-section">
+            <div class="container">
+                <h2>Cerita Fiksi</h2>
+                <p>Ruang bagi para santri untuk berbagi cerita pendek, novel, atau karya fiksi lainnya.</p>
+            </div>
+        </section>
+
+        <!-- ====== FOTO SECTION ====== -->
+        <section id="foto" class="content-section">
+            <div class="container">
+                <h2>Galeri Foto</h2>
+                <div class="photo-gallery">
+                    <!-- Item Foto 1 -->
+                    <div class="photo-item">
+                        <!-- Ganti <svg> dengan tag <img> Anda -->
+                        <!-- Contoh: <img src="path/to/image1.jpg" alt="Deskripsi Foto 1"> -->
+                        <svg width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto 1" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%" fill="#dee2e6" dy=".3em">Foto 1</text></svg>
+                        <div class="photo-caption">Kegiatan Belajar Mengajar</div>
+                    </div>
+                    <!-- Item Foto 2 -->
+                    <div class="photo-item">
+                        <svg width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto 2" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%" fill="#dee2e6" dy=".3em">Foto 2</text></svg>
+                        <div class="photo-caption">Acara Peringatan Hari Besar</div>
+                    </div>
+                    <!-- Item Foto 3 -->
+                    <div class="photo-item">
+                        <svg width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto 3" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%" fill="#dee2e6" dy=".3em">Foto 3</text></svg>
+                        <div class="photo-caption">Lomba Antar Santri</div>
+                    </div>
+                     <!-- Item Foto 4 -->
+                    <div class="photo-item">
+                        <svg width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Foto 4" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="40%" y="50%" fill="#dee2e6" dy=".3em">Foto 4</text></svg>
+                        <div class="photo-caption">Suasana Asrama</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== VIDEO SECTION ====== -->
+        <section id="video" class="content-section">
+            <div class="container">
+                <h2>Galeri Video</h2>
+                <p>Tempat untuk menyematkan video dari YouTube atau platform lain. Anda bisa menampilkan video profil, dokumentasi acara, atau kreasi video lainnya.</p>
+            </div>
+        </section>
+
+        <!-- ====== KONTAK SECTION ====== -->
+        <section id="kontak" class="content-section">
+            <div class="container">
+                <h2>Kontak Kami</h2>
+                <p>Alamat: [Isi dengan alamat lengkap pesantren]</p>
+                <p>Email: [Isi dengan alamat email]</p>
+                <p>Telepon: [Isi dengan nomor telepon]</p>
+                <p>Media Sosial: [Isi dengan link media sosial]</p>
+            </div>
+        </section>
+
+        <!-- ====== PRIVACY POLICY SECTION ====== -->
+        <section id="privacy" class="content-section">
+            <div class="container">
+                <h2>Privacy Policy</h2>
+                <p>Di sini Anda dapat menjelaskan kebijakan privasi website. Misalnya, bagaimana data pengunjung digunakan, penggunaan cookies, dan informasi terkait lainnya. Ini penting untuk transparansi.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Profil</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+            <p>&copy; 2025 Kiprah Santri Bustanul Ulum. Seluruh Hak Cipta Dilindungi.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ====== PUISI ====== -->
-    <section id="puisi" class="content-section">
-      <div class="container">
-        <h2>Kumpulan Puisi</h2>
-        <article>
-          <h3>Judul Puisi 1</h3>
-          <p><em>Isi bait puisi...</em></p>
-        </article>
-        <article>
-          <h3>Judul Puisi 2</h3>
-          <p><em>Isi bait puisi...</em></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ====== FIKSI ====== -->
-    <section id="fiksi" class="content-section">
-      <div class="container">
-        <h2>Cerita Fiksi</h2>
-        <article>
-          <h3>Judul Cerpen</h3>
-          <p>Ringkasan cerpen... <a href="fiksi1.html">Baca selengkapnya</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ====== FOTO ====== -->
-    <section id="foto" class="content-section">
-      <div class="container">
-        <h2>Galeri Foto</h2>
-        <div class="photo-gallery">
-          <div class="photo-item">
-            <img src="foto1.jpg" alt="Foto 1">
-            <div class="photo-caption">Kegiatan Belajar Mengajar</div>
-          </div>
-          <div class="photo-item">
-            <img src="foto2.jpg" alt="Foto 2">
-            <div class="photo-caption">Acara Peringatan Hari Besar</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== VIDEO ====== -->
-    <section id="video" class="content-section">
-      <div class="container">
-        <h2>Galeri Video</h2>
-        <div style="text-align:center">
-          <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/VIDEO_ID" 
-            title="YouTube video" frameborder="0" 
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== KONTAK ====== -->
-    <section id="kontak" class="content-section">
-      <div class="container">
-        <h2>Kontak Kami</h2>
-        <p>Alamat: [Isi alamat lengkap]</p>
-        <p>Email: <a href="mailto:info@domain.com">info@domain.com</a></p>
-        <p>Telepon: 08xx-xxxx-xxxx</p>
-      </div>
-    </section>
-
-    <!-- ====== PRIVACY ====== -->
-    <section id="privacy" class="content-section">
-      <div class="container">
-        <h2>Privacy Policy</h2>
-        <p>[Isi kebijakan privasi sesuai kebutuhan]</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-links">
-        <a href="#beranda">Beranda</a>
-        <a href="#profil">Profil</a>
-        <a href="#kontak">Kontak</a>
-      </div>
-      <p>&copy; 2025 Kiprah Santri Bustanul Ulum. Seluruh Hak Cipta Dilindungi.</p>
-    </div>
-  </footer>
+    </footer>
 
 </body>
 </html>
@@ -328,6 +459,7 @@ footer {
   </p>
   <a href="artikel-suara-tanah-leluhur.html" class="read-more">Baca Selengkapnya</a>
 </section>
+
 
 
 
