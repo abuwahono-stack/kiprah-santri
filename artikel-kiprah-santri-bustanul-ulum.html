@@ -53,3 +53,77 @@
     </p>
   </div>
 </section>
+<!-- Tombol Aksi -->
+<div class="action-buttons">
+  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
+  <button onclick="subscribe()">🔔 Subscribe</button>
+</div>
+
+<!-- Komentar -->
+<div class="comment-box">
+  <h3>Tinggalkan Komentar</h3>
+  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
+  <br>
+  <button class="submit-btn" onclick="postComment()">Kirim</button>
+  <div id="commentSection"></div>
+</div>
+
+<style>
+  .action-buttons {
+    margin-top: 20px;
+  }
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  .comment-box {
+    margin-top: 30px;
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+  }
+  .submit-btn {
+    margin-top: 10px;
+    background: #28a745;
+  }
+  .submit-btn:hover {
+    background: #1e7e34;
+  }
+</style>
+
+<script>
+  let likeCount = 0;
+  function likePost() {
+    likeCount++;
+    document.getElementById("likeCount").innerText = likeCount;
+  }
+
+  function subscribe() {
+    alert("Terima kasih sudah subscribe! 👍");
+  }
+
+  function postComment() {
+    const commentInput = document.getElementById("commentInput");
+    const commentText = commentInput.value.trim();
+    if (commentText !== "") {
+      const commentSection = document.getElementById("commentSection");
+      const newComment = document.createElement("p");
+      newComment.textContent = "💬 " + commentText;
+      commentSection.appendChild(newComment);
+      commentInput.value = "";
+    } else {
+      alert("Komentar tidak boleh kosong!");
+    }
+  }
+</script>
+
