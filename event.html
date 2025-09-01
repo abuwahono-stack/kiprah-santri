@@ -6,6 +6,15 @@
   <title>Event - Kiprah Santri</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
+
 <body>
   <header>
     <img src="assets/logo.png" alt="Logo Santri" class="logo">
@@ -17,3 +26,4 @@
   </main>
 </body>
 </html>
+
