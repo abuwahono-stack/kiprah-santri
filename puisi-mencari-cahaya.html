@@ -120,8 +120,42 @@
       const commentInput = document.getElementById("commentInput");
       const commentText = commentInput.value.trim();
       if (commentText !== "") {
-        const
+        const commentSection = document.getElementById("commentSection");
+        const newComment = document.createElement("p");
+        newComment.textContent = "💬 " + commentText;
+        commentSection.appendChild(newComment);
+        commentInput.value = "";
+      } else {
+        alert("Komentar tidak boleh kosong!");
+      }
+    }
 
-</script>
+    function downloadPoem() {
+      const text = document.getElementById("poemText").innerText;
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "puisi-mencari-cahaya.txt";
+      link.click();
+    }
 
+    function copyPoem() {
+      const text = document.getElementById("poemText").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Puisi berhasil disalin!");
+      });
+    }
 
+    function printPoem() {
+      const content = document.getElementById("poemText").innerHTML;
+      const printWindow = window.open("", "", "height=600,width=800");
+      printWindow.document.write("<html><head><title>Print Puisi</title></head><body>");
+      printWindow.document.write(content);
+      printWindow.document.write("</body></html>");
+      printWindow.document.close();
+      printWindow.print();
+    }
+  </script>
+
+</body>
+</html>
