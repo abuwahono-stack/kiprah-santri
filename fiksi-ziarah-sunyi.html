@@ -11,46 +11,39 @@
       --max:900px;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; background:var(--paper); color:var(--ink);
-      font: 16px/1.75 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+    body{margin:0; background:var(--paper); color:var(--ink);
+      font: 16px/1.75 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
     header{
       padding:56px 20px 28px;
       background: radial-gradient(1200px 400px at 50% -200px, rgba(22,163,74,.25), transparent 60%),
                   linear-gradient(180deg, #ecfdf5, transparent 60%);
-      border-bottom:1px solid #e2e8f0;
-      text-align:center;
+      border-bottom:1px solid #e2e8f0; text-align:center;
     }
-    .title{
-      margin:0 auto 8px; max-width:var(--max);
-      font-size: clamp(28px, 4.5vw, 44px);
-      line-height:1.15; font-weight:800; letter-spacing:.2px;
-      color:var(--accent-dark);
-    }
-    .subtitle{
-      margin:0 auto; max-width:var(--max);
-      color:var(--muted); font-weight:500;
-    }
+    .title{margin:0 auto 8px; max-width:var(--max); font-size: clamp(28px, 4.5vw, 44px);
+      line-height:1.15; font-weight:800; color:var(--accent-dark);}
+    .subtitle{margin:0 auto; max-width:var(--max); color:var(--muted); font-weight:500;}
     main{max-width:var(--max); margin:32px auto; padding:0 20px 40px}
-    article{background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; padding:28px 24px; box-shadow:0 12px 24px rgba(2,6,23,.04)}
+    article{background:#fff; border:1px solid #e2e8f0; border-radius:16px;
+      padding:28px 24px; box-shadow:0 12px 24px rgba(2,6,23,.04)}
     article p{margin:16px 0}
-    .lead::first-letter{
-      float:left; font-size:3.5em; line-height:.9; padding-right:.08em; padding-top:.12em; font-weight:800; color:var(--accent-dark)
-    }
-    hr{border:0; border-top:1px dashed #cbd5e1; margin:28px auto}
-    .scene{color:#0c4a6e; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:.78rem; margin:18px 0 6px}
-    .pull{
-      margin:22px auto; padding:14px 16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; color:#065f46;
-    }
-    footer{
-      text-align:center; color:#64748b; padding:32px 20px 48px;
-    }
+    .lead::first-letter{float:left; font-size:3.5em; line-height:.9; padding-right:.08em;
+      font-weight:800; color:var(--accent-dark)}
+    .scene{color:#0c4a6e; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+      font-size:.78rem; margin:18px 0 6px}
+    .pull{margin:22px auto; padding:14px 16px; background:#f0fdf4; border:1px solid #bbf7d0;
+      border-radius:12px; color:#065f46;}
+    footer{text-align:center; color:#64748b; padding:32px 20px 48px;}
     .meta{font-size:.9rem; color:#64748b; margin-top:6px}
-    @media (min-width:720px){
-      article{padding:40px 44px}
-    }
+    .controls,.action-buttons{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px}
+    .btn{background:#007bff; color:white; border:none; padding:10px 16px; border-radius:6px;
+      cursor:pointer; font-weight:600}
+    .btn:hover{background:#0056b3}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#f43f5e); color:#fff}
+    .comment-box{max-width:var(--max); margin:40px auto; padding:20px; border:1px solid #e2e8f0;
+      border-radius:12px; background:#fff;}
+    textarea{width:100%; height:100px; padding:10px; margin-top:10px}
+    .submit-btn{background:#28a745}
+    .submit-btn:hover{background:#1e7e34}
   </style>
 </head>
 <body>
@@ -61,270 +54,91 @@
   </header>
 
   <main>
-    <article>
-      <p class="lead">Ia menamai dirinya Naya ketika meninggalkan lembah itu—sebuah cekungan panjang yang menyimpan bau besi dari penyesalan, dan suara yang selalu datang setelah malam: desis dari kata-kata yang dulu ia ucapkan sembarang, janji yang dirusak olehnya sendiri.</p>
-
-      <p>Di lembah dosa, jam dinding seolah bertambah jarumnya. Waktu bergerak dengan ganda: satu menunjuk hari yang berjalan, satu lagi menunjuk kenangan yang tak kunjung selesai. Naya berulang kali menutup telinga, tetapi gema tetap menemukan jalan pulang ke kepalanya. Maka ia memutuskan pergi saat kabut paling tipis—ketika batas antara yang gelap dan yang jelas berdamai sekejap—berharap jejaknya terkubur sebelum siapa pun sempat memanggil.</p>
-
-      <p>Di ujung lembah, seorang nenek penjual daun bidara menatapnya. “Ke mana, anak?” tanya nenek itu, suaranya tenang, seperti air sumur.</p>
-
-      <p>“Ke bukit cahaya,” jawab Naya. Nama itu ia dengar dari seorang musafir dahulu, ketika hujan masih dianggap berita baik. Katanya, di puncaknya ada mata air bening yang tidak menampakkan wajah, melainkan hati; siapa pun yang meneguknya akan melihat apa yang tersisa dari dirinya setelah topeng-topeng jatuh.</p>
-
-      <p>Nenek itu tersenyum, menimbang bundelan kecil di tangan Naya—sepasang pakaian, sepotong roti kering, dan selembar surat yang tidak pernah sempat dikirim. “Bawa ini,” ujarnya, menyodorkan tiga helai daun. “Untuk mandi di persinggahan pertama. Kotoran yang menempel di kulit kadang hanya tanda, bukan akar.”</p>
-
-      <hr>
-
-      <div class="scene">Persinggahan Pertama — Sungai yang Berkata Jujur</div>
-      <p>Jalan menuju bukit menanjak pelan, memotong rumpun ilalang yang berdesis seperti nasihat. Naya berjalan hingga matahari menggambar garis tipis di atas punggung bukit sebelah. Ketika rasa haus menuntut, ia menemukan sungai yang jarangnya terlihat: airnya bening, tetapi setiap orang yang menatapnya melihat pantulan berbeda. Ada yang melihat masa depan, ada yang melihat bilik kamar masa kecil.</p>
-
-      <p>Naya menatap, dan sungai menampakkan wajah-wajah yang ia sakiti: ayah yang menanti pintu, guru yang memintanya jujur, teman yang ia biarkan menanggung salah. Wajah-wajah itu tidak marah; mereka hanya menunggu Naya menyebut nama mereka tanpa takut.</p>
-
-      <p>Ia menunduk, membasuh tangan. Daun bidara menyentuh kulit, mengeluarkan aroma yang mengingatkan pada halaman masjid—dingin, bersih, sedikit getir. “Maaf,” katanya kepada air, kepada wajah-wajah yang hadir. “Aku memanggil kalian satu per satu agar aku tidak lupa utangku.” Air tidak menjawab, tetapi riaknya berjalan lebih halus, seolah mengizinkan.</p>
-
-      <p>Di tepi sungai, seorang anak kecil duduk, mengikatkan tali pada batang kecil. “Kak,” katanya dengan polos, “kalau kakak takut, sebutkan saja apa yang paling kakak ingin lindungi.”</p>
-
-      <p>Naya mencari di ruang dadanya. Ia tidak menemukan harta, atau panggung, atau nama. Yang ia temukan hanyalah sepotong doa ibunya yang ia dengar di suatu subuh: agar anaknya diberi pulang terbaik, meski jalan pulang kadang melingkar.</p>
-
-      <p class="pull">“Pulang terbaik,” gumam Naya. “Bukan yang paling cepat, bukan yang paling ramai. Yang paling jujur.”</p>
-
-      <hr>
-
-      <div class="scene">Persinggahan Kedua — Hutan Suara</div>
-      <p>Hutan itu tidak lebat, tetapi setiap pohonnya menyimpan suara—potongan kalimat yang pernah diucapkan orang-orang padanya, dan kalimat yang ia berikan kepada orang lain. Naya berjalan di antara batang-batang, dan kata-kata menetes seperti hujan: “Kau berlebihan,” “Ini bukan salahmu,” “Aku menunggu,” “Tak apa, nanti saja minta maafnya,” “Jadi apa gunanya pengampunan?”</p>
-
-      <p>Di tengah hutan, ia menemukan batu kecil dengan bekas duduk. Seseorang pernah menunggu di sana. Naya duduk, merasakan betapa tubuhnya mudah letih jika pikiran menolak beristirahat. “Aku ingin meminta maaf,” katanya, entah pada siapa dulu harus dituju.</p>
-
-      <p>Suara dari batang sebelah kanan, halus seperti kain yang diangkat dari jemuran: “Permintaan maaf bukan kunci istana. Ia hanyalah pintu kecil yang membuatmu bisa keluar dari ruangan sempit.”</p>
-
-      <p>Naya mengangguk, dan untuk pertama kali sejak meninggalkan lembah, ia menangis. Bukan tangis keras yang memanggil perhatian, melainkan tangis yang jatuh diam-diam, menandai peta pipi dengan garis asin. Ia menyebut nama—ayah, guru, teman—dan menaruh nama-nama itu di saku. “Akan kukejar, satu per satu, selama nafasku cukup.”</p>
-
-      <hr>
-
-      <div class="scene">Persinggahan Ketiga — Kampung Sunyi</div>
-      <p>Menjelang senja, Naya tiba di kampung kecil yang dipagari pagar rendah. Rumah-rumahnya seperti doa: sederhana, tapi pintunya mudah dibuka. Di tengah kampung, ada mushala beratap rumbia. Seorang perempuan tua menyapu halaman, menghentikan gerakannya ketika melihat Naya.</p>
-
-      <p>“Menginaplah,” katanya, “bukit itu tidak ke mana-mana. Kaki yang kering butuh malam yang utuh.”</p>
-
-      <p>Setelah salat, Naya bercerita tanpa menyebut detail yang melukai. Perempuan tua mendengarkan, sesekali hanya mengucap “hmm” yang mengizinkan kisah bergerak. Ketika cerita selesai, ia menuangkan air hangat. “Kau menempuh jalan yang benar,” ujarnya.</p>
-
-      <p>“Bagaimana Ibu tahu?” tanya Naya.</p>
-
-      <p>Perempuan tua tersenyum. “Karena orang yang salah jalan sibuk membuktikan bahwa jalannya lurus. Kau sibuk memeriksa pijakanmu.”</p>
-
-      <p>Malam itu, Naya tidur dengan kepala lebih ringan. Di sela kantuknya, ia melihat lembah dari kejauhan: tidak lagi menakutkan, lebih mirip peta lama yang boleh dilipat rapi.</p>
-
-      <hr>
-
-      <div class="scene">Pendakian Terakhir</div>
-      <p>Pagi berikutnya, jalan menjadi lebih curam. Udara menggigit, tapi cahaya yang jatuh di rerumputan tidak lagi menyilaukan. Di tikungan ketiga, ia bertemu lelaki yang membawa keranjang berisi buku-buku tua.</p>
-
-      <p>“Buku apa itu?” tanya Naya, berhenti untuk mengatur napas.</p>
-
-      <p>“Catatan orang-orang yang belajar memaafkan,” jawab lelaki itu. “Mereka menulis untuk mengingat, bukan untuk mengikat.” Ia menawarkan satu buku tipis dengan sampul lusuh. Di halaman pertama, ada kalimat yang ditulis tangan: <em>‘Yang paling sulit dimaafkan adalah cara kita memandang diri sendiri ketika kita jatuh.’</em></p>
-
-      <p>Naya menutup buku itu, menyimpannya. “Aku ingin belajar menatap diriku tanpa takut,” katanya.</p>
-
-      <p>“Maka jangan meminjam mata orang lain,” jawab lelaki itu, melanjutkan langkahnya pelan.</p>
-
-      <p>Langit siang memutih ketika Naya mencapai bibir puncak. Bukit cahaya tidak berkobar sebagaimana kisah para musafir. Ia tenang—sebuah dataran tinggi dengan rumput yang tunduk pada angin, dan sebuah mata air kecil yang menetes dari batu, jernih, tidak berlebihan.</p>
-
-      <hr>
-
-      <div class="scene">Mata Air</div>
-      <p>Naya berlutut. Air itu dingin, menyentuh kulit seperti nasihat yang akhirnya siap didengar. Ia menangkupkan telapak, meneguk sedikit. Tidak ada wajah yang muncul, tidak ada kilau yang berlebihan. Yang ada hanyalah keheningan yang tidak menakutkan.</p>
-
-      <p>Dalam keheningan itu, ia melihat bayangan dirinya—bukan di air, melainkan di dalam ruang yang selama ini ia jaga dari lampu. Ia melihat seorang anak yang ingin dipeluk, seorang remaja yang ingin dimengerti, seorang dewasa yang kelelahan menjadi kuat demi semua orang.</p>
-
-      <p>“Maafkan aku,” ucap Naya, kali ini pada dirinya sendiri. “Karena memintamu berlari tanpa pernah kuberi izin untuk berhenti.”</p>
-
-      <p>Angin melewati pucuk ilalang, membawa serta bau tanah yang baru diguyur embun. Naya menutup mata, membiarkan kalimat-kalimat yang belum rampung menemukan akhir di sana. Ketika ia membuka mata, dunia tetap sama: lembah masih ada di belakang, jalur turun masih curam. Tetapi ada sesuatu yang telah berubah—cara ia meletakkan kakinya di tanah.</p>
-
-      <p class="pull">Ampunan, pikirnya, bukan penghapus sejarah. Ia adalah huruf baru yang membuat kalimat lama bisa dilanjutkan tanpa berbohong.</p>
-
-      <hr>
-
-      <div class="scene">Turun</div>
-      <p>Naya tidak berlama-lama di puncak. Ia mengisi botol kecil dengan air dari mata air itu. “Untuk ayah, guru, dan temanku,” katanya, “agar aku tidak lupa membayar utang yang bisa kubayar.” Ia tahu ada utang yang tidak bisa ditutup dengan kata-kata, tetapi bisa dipeluk dengan perbuatan.</p>
-
-      <p>Di tikungan pertama, ia bertemu lagi lelaki pembawa buku. “Sudah kau lihat yang perlu kau lihat?” tanyanya.</p>
-
-      <p>“Belum semuanya,” jawab Naya. “Tetapi cukup untuk membuatku berani kembali.”</p>
-
-      <p>Lelaki itu mengangguk. “Maka turunkan cahaya itu, jangan hanya memujinya di puncak.”</p>
-
-      <p>Di hutan suara, kata-kata yang dulu menetes kini terdengar lebih pelan. Naya memilih kalimat yang ingin ia bawa: “Terima kasih telah menunggu,” “Aku mengakui salahku,” “Aku belajar,” “Mari kita mulai lagi.” Di tepi sungai, ia menyapa wajah-wajah yang pernah ia sakiti, berjanji akan mencari jalan menemui mereka—jika tidak dengan kehadiran, dengan doa yang tidak malas.</p>
-
-      <hr>
-
-      <div class="scene">Pulang Terbaik</div>
-      <p>Ketika lembah dosa kembali di hadapan, Naya menyadari lembah itu tidak mengecil; dialah yang tumbuh. Rumah-rumah masih di tempatnya, jam dinding masih dengan dua jarum. Tetapi kini, jarum kedua tidak lagi menunjuk luka yang sama. Ia bergerak pelan, dibimbing ritme langkah yang baru.</p>
-
-      <p>Di mulut lembah, nenek penjual daun bidara menatapnya. “Bagaimana puncaknya?”</p>
-
-      <p>“Tenang,” jawab Naya. “Tenang sekali. Dan jujur.”</p>
-
-      <p>Nenek itu tersenyum. “Kalau begitu, bawalah ke sini. Lembah ini sudah lama menunggu orang yang pulang dengan cahaya di telapak tangannya.”</p>
-
-      <p>Naya menatap telapak tangannya—biasa saja, sama seperti kemarin dan kemarin dulu. Tetapi di bawah kulit yang biasa itu, ia merasakan sesuatu yang menyala kecil, tidak menyilaukan, cukup untuk menuntun langkah. Ia berjalan memasuki lembah, bukan untuk tinggal, melainkan untuk menyelesaikan yang harus selesai: meminta maaf, mengembalikan yang diambil, menutup pintu yang dibuka sembarangan.</p>
-
-      <p>Di suatu sore yang tidak spektakuler, Naya mengetuk sebuah pintu. Ayahnya membuka, ragu sekejap, lalu mempersilakan masuk. Tidak ada pidato, tidak ada pelukan yang berlebihan. Hanya teh panas, dan kursi yang ditarik sedikit lebih dekat. Itu sudah cukup menjadi bahasa.</p>
-
-      <p>Malamnya, Naya menulis surat—bukan yang dulu, tetapi yang baru. “Teruntuk diriku,” tulisnya, “terima kasih telah berani mendaki tanpa jaminan bahwa puncak akan mengubah apa pun. Ternyata yang berubah adalah cara kita menuruni jalan.”</p>
-
-      <p>Di luar, lembah mengembuskan udara yang sama. Di dalam, Naya menghembuskan napas yang berbeda. Ia menutup mata sejenak, lalu tersenyum kecil—senyum milik orang yang akhirnya mengerti: pulang terbaik tidak selalu berarti kembali seperti semula, melainkan kembali dengan cara memandang yang baru.</p>
+    <article id="cerpen">
+      <!-- (isi cerpen panjang seperti di versi Anda) -->
+      <p class="lead">Ia menamai dirinya Naya ketika meninggalkan lembah itu ...</p>
+      <!-- dst -->
     </article>
+
+    <!-- Tombol kontrol -->
+    <div class="controls">
+      <button class="btn primary" id="downloadBtn">Download Cerpen (HTML)</button>
+      <button class="btn" id="copyBtn">Salin ke Clipboard</button>
+      <button class="btn" id="printBtn">Cetak</button>
+    </div>
+
+    <!-- Tombol aksi sosial -->
+    <div class="action-buttons">
+      <button class="btn" onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
+      <button class="btn" onclick="subscribe()">🔔 Subscribe</button>
+    </div>
+
+    <!-- Komentar -->
+    <div class="comment-box">
+      <h3>Tinggalkan Komentar</h3>
+      <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
+      <br>
+      <button class="btn submit-btn" onclick="postComment()">Kirim</button>
+      <div id="commentSection"></div>
+    </div>
   </main>
 
   <footer>
     <small>&copy; 2025. Cerita fiksi — “Ziarah Sunyi: Dari Lembah Dosa ke Bukit Cahaya”.</small>
   </footer>
+
+<script>
+  const article = document.getElementById('cerpen');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const printBtn = document.getElementById('printBtn');
+
+  // Download HTML
+  downloadBtn.addEventListener('click', () => {
+    const html = `<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Ziarah Sunyi</title></head><body>${article.innerHTML}</body></html>`;
+    const blob = new Blob([html], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ziarah-sunyi.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  // Copy
+  copyBtn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(article.innerText);
+      copyBtn.innerText = 'Tersalin!';
+      setTimeout(()=> copyBtn.innerText = 'Salin ke Clipboard',1600);
+    }catch(e){ alert('Gagal menyalin!'); }
+  });
+
+  // Print
+  printBtn.addEventListener('click', ()=> window.print());
+
+  // Like & Subscribe
+  let likeCount = 0;
+  function likePost(){ document.getElementById("likeCount").innerText = ++likeCount; }
+  function subscribe(){ alert("Terima kasih sudah subscribe! 👍"); }
+
+  // Komentar
+  function postComment(){
+    const input = document.getElementById("commentInput");
+    const text = input.value.trim();
+    if(text){
+      const sec = document.getElementById("commentSection");
+      const p = document.createElement("p");
+      p.textContent = "💬 " + text;
+      sec.appendChild(p);
+      input.value="";
+    } else { alert("Komentar tidak boleh kosong!"); }
+  }
+</script>
 </body>
 </html>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
 
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
-
-<style>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
-    }
-  }
-</script>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
-
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
-
-<style>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
-    }
-  }
-</script>
 
 
