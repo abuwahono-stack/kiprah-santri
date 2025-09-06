@@ -225,6 +225,7 @@
 </div>
 
 <style>
+  <p style="margin-top:14px;color:var(--muted)">Mau versi audio/recitation atau format lain (PDF/Word)?</p>
   .action-buttons {
     margin-top: 20px;
   }
@@ -258,6 +259,22 @@
 </style>
 
 <script>
+  const poem = document.getElementById('poem');
+document.getElementById('download').addEventListener('click', ()=>{
+const html = `<!doctype html>\n<html lang="id">\n<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Puisi - Bakiak Bapakku</title></head><body>${poem.innerHTML}</body></html>`;
+const blob = new Blob([html], {type:'text/html'});
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a'); a.href = url; a.download = 'puisi-bakiak-bapakku.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+
+
+document.getElementById('copy').addEventListener('click', async ()=>{
+try{await navigator.clipboard.writeText(poem.innerText); alert('Puisi tersalin ke clipboard.');}catch(e){alert('Gagal menyalin, silakan salin manual.');}
+});
+
+
+document.getElementById('print').addEventListener('click', ()=> window.print());
+
   let likeCount = 0;
   function likePost() {
     likeCount++;
@@ -282,6 +299,7 @@
     }
   }
 </script>
+
 
 
 
