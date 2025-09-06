@@ -1,208 +1,127 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puisi: Mencari Cahaya</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .poem {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-            color: #4a90e2;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puisi: Mencari Cahaya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .poem {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #4a90e2;
+    }
+    .action-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .submit-btn {
+      background: #28a745;
+    }
+    .submit-btn:hover {
+      background: #1e7e34;
+    }
+    .comment-box {
+      margin-top: 30px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="poem">
-        <h1>Mencari Cahaya</h1>
-        <p>Di ujung malam yang kelam,</p>
-        <p>Ia melangkah tanpa arah,</p>
-        <p>Mencari cahaya yang hilang,</p>
-        <p>Dalam sunyi, hatinya bergetar.</p>
+  <div class="poem" id="poemText">
+    <h1>Mencari Cahaya</h1>
+    <p>Di ujung malam yang kelam,</p>
+    <p>Ia melangkah tanpa arah,</p>
+    <p>Mencari cahaya yang hilang,</p>
+    <p>Dalam sunyi, hatinya bergetar.</p>
 
-        <p>Berjalan jauh ke negeri bayangan,</p>
-        <p>Menelusuri lorong-lorong sepi,</p>
-        <p>Setiap sudut, setiap harapan,</p>
-        <p>Namun cahaya tak kunjung hadir.</p>
+    <p>Berjalan jauh ke negeri bayangan,</p>
+    <p>Menelusuri lorong-lorong sepi,</p>
+    <p>Setiap sudut, setiap harapan,</p>
+    <p>Namun cahaya tak kunjung hadir.</p>
 
-        <p>Ia bertanya pada bintang-bintang,</p>
-        <p>“Di mana sinar yang kuimpikan?”</p>
-        <p>Tapi hanya angin yang menjawab,</p>
-        <p>“Cahaya itu ada dalam dirimu.”</p>
+    <p>Ia bertanya pada bintang-bintang,</p>
+    <p>“Di mana sinar yang kuimpikan?”</p>
+    <p>Tapi hanya angin yang menjawab,</p>
+    <p>“Cahaya itu ada dalam dirimu.”</p>
 
-        <p>Dengan ragu, ia menoleh,</p>
-        <p>Ke dalam jiwa yang selama ini terabaikan,</p>
-        <p>Di sana, sinar lembut berkilau,</p>
-        <p>Menanti untuk ditemukan.</p>
+    <p>Dengan ragu, ia menoleh,</p>
+    <p>Ke dalam jiwa yang selama ini terabaikan,</p>
+    <p>Di sana, sinar lembut berkilau,</p>
+    <p>Menanti untuk ditemukan.</p>
 
-        <p>Kini ia tahu, perjalanan ini,</p>
-        <p>Bukan sekadar mencari di luar,</p>
-        <p>Tapi menemukan cahaya abadi,</p>
-        <p>Yang selalu ada di dalam hati.</p>
-    </div>
+    <p>Kini ia tahu, perjalanan ini,</p>
+    <p>Bukan sekadar mencari di luar,</p>
+    <p>Tapi menemukan cahaya abadi,</p>
+    <p>Yang selalu ada di dalam hati.</p>
+  </div>
 
-</body>
+  <!-- Tombol Aksi -->
+  <div class="action-buttons">
+    <button onclick="downloadPoem()">⬇️ Download</button>
+    <button onclick="copyPoem()">📋 Salin</button>
+    <button onclick="printPoem()">🖨️ Print</button>
+    <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
+    <button onclick="subscribe()">🔔 Subscribe</button>
+  </div>
 
-</html>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
+  <!-- Komentar -->
+  <div class="comment-box">
+    <h3>Tinggalkan Komentar</h3>
+    <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
+    <br>
+    <button class="submit-btn" onclick="postComment()">Kirim</button>
+    <div id="commentSection"></div>
+  </div>
 
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
+  <script>
+    let likeCount = 0;
 
-<style>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
+    function likePost() {
+      likeCount++;
+      document.getElementById("likeCount").innerText = likeCount;
     }
-  }
-</script>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
 
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
-
-<style>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
+    function subscribe() {
+      alert("Terima kasih sudah subscribe! 👍");
     }
-  }
+
+    function postComment() {
+      const commentInput = document.getElementById("commentInput");
+      const commentText = commentInput.value.trim();
+      if (commentText !== "") {
+        const
+
 </script>
+
 
