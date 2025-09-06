@@ -27,7 +27,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .pantun p {
-      margin-bottom: 20px; /* memberi spasi antar bait */
+      margin-bottom: 20px;
       white-space: pre-line;
     }
     footer {
@@ -36,14 +36,45 @@
       font-size: 14px;
       color: #888;
     }
+    .controls, .action-buttons, .comment-box {
+      max-width: 750px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .submit-btn {
+      background: #28a745;
+    }
+    .submit-btn:hover {
+      background: #1e7e34;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
 
   <h1>Pantun Berantai Kehidupan Santri</h1>
 
-  <div class="pantun">
-
+  <div class="pantun" id="pantun">
     <p>Belajar kitab di waktu pagi,<br>
     Suara murattal merdu terdengar.<br>
     Santri berjuang sepenuh hati,<br>
@@ -91,216 +122,122 @@
 
     <p>Pergi ke sawah membawa cangkul,<br>
     Padi ditanam berbaris rapi.<br>
-    Santri belajar dengan tekun betul,<br>
+    Santri belajar dengan tekun betul,
     Agar hidup bermanfaat bagi negeri.</p>
 
     <p>Langit biru dihiasi awan,<br>
     Angin berhembus membawa pesan.<br>
-    Santri sabar dalam cobaan,<br>
+    Santri sabar dalam cobaan,
     Hidupnya damai penuh harapan.</p>
 
     <p>Perahu layar menuju dermaga,<br>
-    Tali ditambat di tiang kayu.<br>
-    Santri selalu menjaga doa,<br>
+    Tali ditambat di tiang kayu.
+    Santri selalu menjaga doa,
     Cinta pada Allah tak pernah layu.</p>
 
-    <p>Malam hening bintang bertabur,<br>
-    Ayat suci jadi lantunan.<br>
-    Santri berzikir dengan penuh syukur,<br>
+    <p>Malam hening bintang bertabur,
+    Ayat suci jadi lantunan.
+    Santri berzikir dengan penuh syukur,
     Hati tenang penuh ketentraman.</p>
 
-    <p>Naik sepeda ke kota Blitar,<br>
-    Membawa buku dalam tas kain.<br>
-    Santri berusaha jadi pintar,<br>
+    <p>Naik sepeda ke kota Blitar,
+    Membawa buku dalam tas kain.
+    Santri berusaha jadi pintar,
     Ilmu diamalkan sepanjang hayat.</p>
 
-    <p>Air hujan jatuh menetes,<br>
-    Menyubur tanah di kebun desa.<br>
-    Santri berakhlak sopan dan tulus,<br>
+    <p>Air hujan jatuh menetes,
+    Menyubur tanah di kebun desa.
+    Santri berakhlak sopan dan tulus,
     Menyebar rahmat untuk sesama.</p>
 
-    <p>Mentari terbenam di ufuk senja,<br>
-    Langit memerah indah berseri.<br>
-    Santri berdoa penuh makna,<br>
+    <p>Mentari terbenam di ufuk senja,
+    Langit memerah indah berseri.
+    Santri berdoa penuh makna,
     Hidup bahagia dunia akhirat nanti.</p>
+  </div>
 
+  <div class="controls">
+    <button id="download">⬇️ Download (HTML)</button>
+    <button id="copy">📋 Salin</button>
+    <button id="print">🖨️ Cetak</button>
+  </div>
+
+  <div class="action-buttons">
+    <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
+    <button onclick="subscribe()">🔔 Subscribe</button>
+  </div>
+
+  <div class="comment-box">
+    <h3>Tinggalkan Komentar</h3>
+    <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
+    <br>
+    <button class="submit-btn" onclick="postComment()">Kirim</button>
+    <div id="commentSection"></div>
   </div>
 
   <footer>
     &copy; 2025 Ponpes Bustanul Ulum
   </footer>
 
+  <script>
+    // Download file HTML
+    document.getElementById('download').addEventListener('click', () => {
+      const pantun = document.getElementById('pantun');
+      const html = `<!doctype html><html><head><meta charset='utf-8'><title>Pantun Berantai Kehidupan Santri</title></head><body>${pantun.innerHTML}</body></html>`;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'pantun-santri.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Copy teks pantun
+    document.getElementById('copy').addEventListener('click', async () => {
+      try {
+        const pantun = document.getElementById('pantun').innerText;
+        await navigator.clipboard.writeText(pantun);
+        alert('Pantun berhasil disalin ke clipboard.');
+      } catch(e) {
+        alert('Gagal menyalin, silakan salin manual.');
+      }
+    });
+
+    // Print
+    document.getElementById('print').addEventListener('click', () => {
+      window.print();
+    });
+
+    // Like
+    let likeCount = 0;
+    function likePost() {
+      likeCount++;
+      document.getElementById("likeCount").innerText = likeCount;
+    }
+
+    // Subscribe
+    function subscribe() {
+      alert("Terima kasih sudah subscribe! 👍");
+    }
+
+    // Komentar
+    function postComment() {
+      const commentInput = document.getElementById("commentInput");
+      const commentText = commentInput.value.trim();
+      if (commentText !== "") {
+        const commentSection = document.getElementById("commentSection");
+        const newComment = document.createElement("p");
+        newComment.textContent = "💬 " + commentText;
+        commentSection.appendChild(newComment);
+        commentInput.value = "";
+      } else {
+        alert("Komentar tidak boleh kosong!");
+      }
+    }
+  </script>
+
 </body>
 </html>
-<div class="controls">
-      <button class="btn primary" id="download">Download Puisi (HTML)</button>
-      <button class="btn" id="copy">Salin Puisi</button>
-      <button class="btn" id="print">Cetak</button>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
-
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
-
-<style>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
-    }
-  }
-</script>
-<!-- Tombol Aksi -->
-<div class="action-buttons">
-  <button onclick="likePost()">👍 Like (<span id="likeCount">0</span>)</button>
-  <button onclick="subscribe()">🔔 Subscribe</button>
-</div>
-
-<!-- Komentar -->
-<div class="comment-box">
-  <h3>Tinggalkan Komentar</h3>
-  <textarea id="commentInput" placeholder="Tulis komentar Anda..."></textarea>
-  <br>
-  <button class="submit-btn" onclick="postComment()">Kirim</button>
-  <div id="commentSection"></div>
-</div>
-
-<style>
-  <p style="margin-top:14px;color:var(--muted)">Mau versi audio/recitation atau format lain (PDF/Word)?</p>
-  .action-buttons {
-    margin-top: 20px;
-  }
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .comment-box {
-    margin-top: 30px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-  }
-  .submit-btn {
-    margin-top: 10px;
-    background: #28a745;
-  }
-  .submit-btn:hover {
-    background: #1e7e34;
-  }
-</style>
-
-<script>
-  const poem = document.getElementById('poem');
-document.getElementById('download').addEventListener('click', ()=>{
-const html = `<!doctype html>\n<html lang="id">\n<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Puisi - Bakiak Bapakku</title></head><body>${poem.innerHTML}</body></html>`;
-const blob = new Blob([html], {type:'text/html'});
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a'); a.href = url; a.download = 'puisi-bakiak-bapakku.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-});
-
-
-document.getElementById('copy').addEventListener('click', async ()=>{
-try{await navigator.clipboard.writeText(poem.innerText); alert('Puisi tersalin ke clipboard.');}catch(e){alert('Gagal menyalin, silakan salin manual.');}
-});
-
-
-document.getElementById('print').addEventListener('click', ()=> window.print());
-
-  let likeCount = 0;
-  function likePost() {
-    likeCount++;
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function subscribe() {
-    alert("Terima kasih sudah subscribe! 👍");
-  }
-
-  function postComment() {
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-    if (commentText !== "") {
-      const commentSection = document.getElementById("commentSection");
-      const newComment = document.createElement("p");
-      newComment.textContent = "💬 " + commentText;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    } else {
-      alert("Komentar tidak boleh kosong!");
-    }
-  }
-</script>
-
-
-
-
-
