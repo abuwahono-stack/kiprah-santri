@@ -1,317 +1,163 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilusi 'Maxwin': Menjerat Logika, Menguras Dompet - Kiprah Santri Bustanul Ulum</title>
-    <style>
-        /* --- Reset & Pengaturan Dasar --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilusi 'Maxwin': Menjerat Logika, Menguras Dompet - Kiprah Santri Bustanul Ulum</title>
+  <style>
+    /* Reset & Dasar */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .container { max-width: 1100px; margin: auto; padding: 0 20px; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            background-color: #f8f9fa;
-            color: #333;
-        }
+    /* Header */
+    .header {
+      background: #fff;
+      padding: 1rem 0;
+      border-bottom: 3px solid #007bff;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #007bff; }
+    .logo a { text-decoration: none; color: inherit; }
+    .nav-menu ul { list-style: none; display: flex; }
+    .nav-menu li { margin-left: 20px; }
+    .nav-menu a {
+      color: #333; text-decoration: none; font-weight: 500;
+      padding: 5px 10px; border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-menu a:hover, .nav-menu a.active { background: #007bff; color: #fff; }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px;
-        }
+    /* Artikel */
+    .article-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px 40px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .article-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #d9534f;
+    }
+    .article-meta {
+      display: flex; flex-wrap: wrap;
+      gap: 15px; font-size: 0.9rem; color: #666;
+      margin-bottom: 20px;
+    }
+    .article-meta .category {
+      background: #f0ad4e; color: #fff;
+      padding: 3px 10px; border-radius: 20px;
+      font-weight: bold;
+    }
+    .article-body p { text-align: justify; margin-bottom: 20px; }
+    .article-body blockquote {
+      border-left: 4px solid #d9534f;
+      padding: 15px 20px;
+      margin: 20px 0;
+      background: #f9f9f9;
+      font-style: italic;
+      color: #555;
+    }
 
-        /* --- Header & Navigasi (Konsisten) --- */
-        .header {
-            background-color: #ffffff;
-            padding: 1rem 0;
-            border-bottom: 3px solid #007bff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+    /* Tombol aksi */
+    .article-actions {
+      display: flex; gap: 10px;
+      margin: 20px 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+    .action-btn {
+      background: #f0f0f0; border: 1px solid #ddd;
+      border-radius: 5px; padding: 8px 12px;
+      cursor: pointer; font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .action-btn:hover { background: #e0e0e0; }
 
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Like & Subscribe */
+    .social-interaction { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+    .like-subscribe-area { display: flex; gap: 15px; margin-bottom: 25px; }
+    .like-btn {
+      border: 1px solid #d9534f; color: #d9534f;
+      padding: 8px 15px; border-radius: 20px;
+      cursor: pointer; background: none;
+      transition: 0.3s;
+    }
+    .like-btn.liked { background: #d9534f; color: #fff; cursor: not-allowed; }
+    .subscribe-btn {
+      background: #007bff; color: #fff;
+      border: none; padding: 10px 20px;
+      border-radius: 5px; font-weight: bold;
+      cursor: pointer;
+    }
+    .subscribe-btn.subscribed { background: #6c757d; cursor: not-allowed; }
 
-        .logo { font-size: 1.5rem; font-weight: bold; color: #007bff; }
-        .logo a { text-decoration: none; color: inherit; }
-
-        .nav-menu ul { list-style: none; display: flex; }
-        .nav-menu li { margin-left: 20px; }
-        .nav-menu a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .nav-menu a:hover, .nav-menu a.active { background-color: #007bff; color: #fff; }
-        
-        .menu-toggle { display: none; cursor: pointer; font-size: 24px; }
-        #menu-checkbox { display: none; }
-
-        /* --- Konten Artikel Detail --- */
-        .article-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px 40px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .article-header h1 {
-            font-size: 2.5rem;
-            line-height: 1.3;
-            margin-bottom: 15px;
-            color: #d9534f;
-        }
-
-        .article-meta {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .article-meta .category {
-            background-color: #f0ad4e;
-            color: #fff;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-
-        /* --- Tombol Aksi (Baru) --- */
-        .article-actions {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .action-btn {
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background-color 0.3s;
-        }
-        .action-btn:hover {
-            background-color: #e0e0e0;
-        }
-
-        .article-image-main {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .article-body h2 {
-            font-size: 1.8rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 2px solid #f0ad4e;
-            padding-bottom: 5px;
-        }
-        
-        .article-body h3 {
-            font-size: 1.4rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #007bff;
-        }
-
-        .article-body p, .article-body li {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .article-body ul { list-style-position: inside; padding-left: 10px; }
-        .article-body blockquote {
-            border-left: 4px solid #d9534f;
-            padding: 15px 20px;
-            margin: 30px 0;
-            background-color: #f9f9f9;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #555;
-        }
-
-        /* --- Interaksi Sosial (Baru) --- */
-        .social-interaction {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        .like-subscribe-area {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .like-btn {
-            background: none;
-            border: 1px solid #d9534f;
-            color: #d9534f;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-        .like-btn.liked {
-            background-color: #d9534f;
-            color: white;
-            cursor: not-allowed;
-        }
-        .like-btn .icon { font-size: 1.2rem; }
-        .subscribe-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .subscribe-btn:hover { background-color: #0056b3; }
-        .subscribe-btn.subscribed {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
-
-        /* --- Komentar (Baru) --- */
-        .comments-section h2 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-        }
-        .comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
-        .comment-form input, .comment-form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        .comment-form textarea { min-height: 100px; resize: vertical; }
-        .comment-form button {
-            align-self: flex-start;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .comment-disclaimer { font-size: 0.8rem; color: #888; margin-top: -25px; margin-bottom: 30px; }
-        #comment-list { list-style: none; }
-        .comment-item {
-            background-color: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        .comment-item strong { color: #007bff; }
-        .comment-item p { font-size: 1rem; text-align: left; margin-top: 5px; margin-bottom: 0; }
-
-        /* --- Footer --- */
-        .footer {
-            background-color: #343a40;
-            color: #f8f9fa;
-            padding: 40px 0;
-            text-align: center;
-        }
-        .footer-links a { color: #f8f9fa; text-decoration: none; margin: 0 15px; }
-
-        /* --- Media Query --- */
-        @media (max-width: 768px) {
-            .header .container { flex-wrap: wrap; }
-            .menu-toggle { display: block; position: absolute; right: 20px; top: 22px; }
-            .nav-menu { width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
-            .nav-menu ul { flex-direction: column; padding: 20px 0; background-color: #fff; }
-            .nav-menu li { margin: 10px 0; text-align: center; }
-            #menu-checkbox:checked ~ .nav-menu { max-height: 500px; }
-            .article-container { margin: 20px auto; padding: 20px; }
-            .article-header h1 { font-size: 2rem; }
-            .article-actions { flex-wrap: wrap; }
-        }
-    </style>
+    /* Komentar */
+    .comments-section h2 { margin-bottom: 15px; }
+    .comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .comment-form input, .comment-form textarea {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+      font-family: inherit;
+    }
+    .comment-form button {
+      align-self: flex-start;
+      background: #28a745; color: #fff;
+      border: none; padding: 8px 15px;
+      border-radius: 5px; cursor: pointer;
+    }
+    #comment-list { list-style: none; padding: 0; }
+    .comment-item {
+      background: #f9f9f9; border: 1px solid #eee;
+      border-radius: 5px; padding: 10px 15px;
+      margin-bottom: 10px;
+    }
+    .comment-item strong { color: #007bff; }
+  </style>
 </head>
 <body>
 
-    <!-- ====== HEADER ====== -->
-    <header class="header">
-        <div class="container">
-            <div class="logo"><a href="index.html">Kiprah Santri</a></div>
-            <input type="checkbox" id="menu-checkbox">
-            <label for="menu-checkbox" class="menu-toggle">&#9776;</label>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="profil.html">Profil</a></li>
-                    <li><a href="artikel.html" class="active">Artikel</a></li>
-                    <li><a href="puisi.html">Puisi</a></li>
-                    <li><a href="fiksi.html">Fiksi</a></li>
-                    <li><a href="foto.html">Foto</a></li>
-                    <li><a href="video.html">Video</a></li>
-                    <li><a href="kontak.html">Kontak</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </nav>
-        </div>
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">Kiprah Santri</a></div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="artikel.html" class="active">Artikel</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="article-container">
+    <header class="article-header">
+      <h1>Ilusi 'Maxwin': Menjerat Logika, Menguras Dompet</h1>
+      <div class="article-meta">
+        <span class="author">Oleh: Pengamat Sosial Santri</span>
+        <span class="date">4 September 2025</span>
+        <span class="category">Opini</span>
+      </div>
     </header>
 
-    <main>
-        <div class="article-container">
-            <header class="article-header">
-                <h1>Ilusi 'Maxwin': Menjerat Logika, Menguras Dompet</h1>
-                <div class="article-meta">
-                    <span class="author">Oleh: Pengamat Sosial Santri</span>
-                    <span class="date">4 September 2025</span>
-                    <span class="category">Opini</span>
-                </div>
-            </header>
-            
-            <!-- ====== Tombol Aksi (Baru) ====== -->
-            <div class="article-actions">
-                <button id="print-btn" class="action-btn">🖨️ Cetak</button>
-                <button id="copy-btn" class="action-btn">📋 Salin Teks</button>
-                <button id="download-btn" class="action-btn">💾 Download (.txt)</button>
-            </div>
+    <!-- Tombol aksi -->
+    <div class="article-actions">
+      <button id="print-btn" class="action-btn">🖨️ Cetak</button>
+      <button id="copy-btn" class="action-btn">📋 Salin</button>
+      <button id="download-btn" class="action-btn">💾 Download</button>
+    </div>
 
-            <svg class="article-image-main" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em" text-anchor="middle">Ilustrasi orang frustrasi di depan ponsel</text></svg>
-
-            <div class="article-body" id="article-content">
+    <div class="article-body" id="article-content">
                 <p>
                     Di warung kopi, pos ronda, hingga di sela-sela jam istirahat kerja, pemandangan yang sama kian akrab: jari-jari lincah menekan layar ponsel, mata terpaku pada gulungan gambar warna-warni, diiringi harapan cemas. Suara khas "kakek Zeus" menyambar petir atau notifikasi "Gacor, Kang!" menjadi latar musik baru dalam keseharian kita. Inilah wajah dari pandemi senyap yang tengah menggerogoti masyarakat: kegilaan terhadap judi slot online.
                 </p>
@@ -350,144 +196,86 @@
                 <p>
                     Kegilaan judi slot adalah penyakit sosial yang mengancam produktivitas, kesehatan mental, dan keharmonisan keluarga. Mengabaikannya berarti membiarkan generasi kita 'rungkad' secara massal. Sudah saatnya kita semua bergerak bersama, dari pemerintah hingga individu, untuk mematikan mesin ilusi ini dan kembali membangun harapan di dunia nyata.
                 </p>
-            </div>
+    </div>
 
-            <!-- ====== Interaksi Sosial (Baru) ====== -->
-            <div class="social-interaction">
-                <div class="like-subscribe-area">
-                    <button id="like-btn" class="like-btn">
-                        <span class="icon">♡</span> Suka <span id="like-count">138</span>
-                    </button>
-                    <button id="subscribe-btn" class="subscribe-btn">Ikuti Penulis</button>
-                </div>
+    <!-- Like, Subscribe, Komentar -->
+    <div class="social-interaction">
+      <div class="like-subscribe-area">
+        <button id="like-btn" class="like-btn">♡ Suka <span id="like-count">10</span></button>
+        <button id="subscribe-btn" class="subscribe-btn">Ikuti Penulis</button>
+      </div>
+      <div class="comments-section">
+        <h2>Komentar</h2>
+        <form id="comment-form" class="comment-form">
+          <input type="text" id="comment-name" placeholder="Nama Anda" required>
+          <textarea id="comment-text" placeholder="Tulis komentar Anda..." required></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+        <ul id="comment-list">
+          <li class="comment-item"><strong>Ahmad</strong><p>Tulisan yang sangat membuka mata.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
 
-                <div class="comments-section">
-                    <h2>Komentar</h2>
-                    <form id="comment-form">
-                        <input type="text" id="comment-name" placeholder="Nama Anda" required>
-                        <textarea id="comment-text" placeholder="Tulis komentar Anda di sini..." required></textarea>
-                        <button type="submit">Kirim Komentar</button>
-                    </form>
-                    <p class="comment-disclaimer">Catatan: Komentar bersifat sementara dan akan hilang saat halaman dimuat ulang.</p>
-                    <ul id="comment-list">
-                        <li class="comment-item">
-                            <strong>Ahmad Fauzi</strong>
-                            <p>Artikel yang sangat membuka mata. Judi slot memang sudah meresahkan sekali di lingkungan saya. Solusi di lapisan hulu sepertinya paling krusial.</p>
-                        </li>
-                        <li class="comment-item">
-                            <strong>Siti Aisyah</strong>
-                            <p>Setuju! Edukasi finansial harus digalakkan sejak dini agar tidak mudah tergiur jalan instan seperti ini.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Kiprah Santri Bustanul Ulum</p>
+  </div>
+</footer>
 
-        </div>
-    </main>
+<script>
+  // Tombol Aksi
+  document.getElementById('print-btn').onclick = () => window.print();
+  document.getElementById('copy-btn').onclick = () => {
+    navigator.clipboard.writeText(document.getElementById('article-content').innerText);
+    alert("Teks tersalin!");
+  };
+  document.getElementById('download-btn').onclick = () => {
+    const text = document.getElementById('article-content').innerText;
+    const blob = new Blob([text], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "artikel.txt";
+    a.click();
+  };
 
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="index.html">Beranda</a>
-                <a href="profil.html">Profil</a>
-                <a href="kontak.html">Kontak</a>
-            </div>
-            <p>&copy; 2025 Kiprah Santri Bustanul Ulum. Seluruh Hak Cipta Dilindungi.</p>
-        </div>
-    </footer>
+  // Like
+  const likeBtn = document.getElementById('like-btn');
+  likeBtn.onclick = () => {
+    if (!likeBtn.classList.contains('liked')) {
+      let count = document.getElementById('like-count');
+      count.textContent = parseInt(count.textContent) + 1;
+      likeBtn.classList.add('liked');
+      likeBtn.innerHTML = "❤️ Disukai " + count.textContent;
+    }
+  };
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Fungsionalitas Tombol Aksi ---
-            const printBtn = document.getElementById('print-btn');
-            const copyBtn = document.getElementById('copy-btn');
-            const downloadBtn = document.getElementById('download-btn');
-            const articleContent = document.getElementById('article-content');
+  // Subscribe
+  const subBtn = document.getElementById('subscribe-btn');
+  subBtn.onclick = () => {
+    subBtn.textContent = "✓ Telah Mengikuti";
+    subBtn.classList.add('subscribed');
+    subBtn.disabled = true;
+  };
 
-            // Cetak
-            printBtn.addEventListener('click', () => {
-                window.print();
-            });
-
-            // Salin
-            copyBtn.addEventListener('click', () => {
-                const textToCopy = articleContent.innerText;
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    copyBtn.textContent = '✅ Tersalin!';
-                    setTimeout(() => {
-                        copyBtn.innerHTML = '📋 Salin Teks';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Gagal menyalin teks: ', err);
-                });
-            });
-
-            // Download
-            downloadBtn.addEventListener('click', () => {
-                const textToDownload = articleContent.innerText;
-                const blob = new Blob([textToDownload], { type: 'text/plain' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = 'artikel-opini-judislot.txt';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            });
-
-            // --- Fungsionalitas Interaksi Sosial ---
-            const likeBtn = document.getElementById('like-btn');
-            const likeCountSpan = document.getElementById('like-count');
-            const likeIcon = likeBtn.querySelector('.icon');
-
-            likeBtn.addEventListener('click', () => {
-                if (!likeBtn.classList.contains('liked')) {
-                    let currentLikes = parseInt(likeCountSpan.textContent);
-                    likeCountSpan.textContent = currentLikes + 1;
-                    likeBtn.classList.add('liked');
-                    likeIcon.textContent = '❤️';
-                    likeBtn.disabled = true;
-                }
-            });
-
-            const subscribeBtn = document.getElementById('subscribe-btn');
-            subscribeBtn.addEventListener('click', () => {
-                 if (!subscribeBtn.classList.contains('subscribed')) {
-                    subscribeBtn.textContent = '✓ Telah Mengikuti';
-                    subscribeBtn.classList.add('subscribed');
-                    subscribeBtn.disabled = true;
-                 }
-            });
-
-            // --- Fungsionalitas Komentar ---
-            const commentForm = document.getElementById('comment-form');
-            const commentList = document.getElementById('comment-list');
-            const commentName = document.getElementById('comment-name');
-            const commentText = document.getElementById('comment-text');
-
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                const name = commentName.value.trim();
-                const text = commentText.value.trim();
-
-                if (name === '' || text === '') {
-                    alert('Nama dan komentar tidak boleh kosong!');
-                    return;
-                }
-
-                const newComment = document.createElement('li');
-                newComment.className = 'comment-item';
-                newComment.innerHTML = `<strong>${name}</strong><p>${text}</p>`;
-                
-                commentList.appendChild(newComment);
-
-                // Reset form
-                commentName.value = '';
-                commentText.value = '';
-            });
-        });
-    </script>
+  // Komentar
+  const form = document.getElementById('comment-form');
+  const list = document.getElementById('comment-list');
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const name = document.getElementById('comment-name').value.trim();
+    const text = document.getElementById('comment-text').value.trim();
+    if (name && text) {
+      const li = document.createElement('li');
+      li.className = "comment-item";
+      li.innerHTML = "<strong>" + name + "</strong><p>" + text + "</p>";
+      list.appendChild(li);
+      form.reset();
+    }
+  };
+</script>
 
 </body>
 </html>
