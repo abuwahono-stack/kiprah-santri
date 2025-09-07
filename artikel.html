@@ -20,6 +20,65 @@
       <a href="artikel-suara-tanah-leluhur.html" class="read-more">Baca Selengkapnya</a>
     </section>
   </main>
+  <div class="posts">
+    <div class="post">
+        <h2>Judul Postingan 1</h2>
+        <p>Isi postingan 1...</p>
+    </div>
+    <div class="post">
+        <h2>Judul Postingan 2</h2>
+        <p>Isi postingan 2...</p>
+    </div>
+    <!-- Tambahkan lebih banyak postingan sesuai kebutuhan -->
+</div>
+
+<div id="buttons-template" style="display: none;">
+    <button onclick="downloadPost()">Download</button>
+    <button onclick="copyPost()">Salin</button>
+    <button onclick="printPost()">Print</button>
+    <button onclick="likePost()">Like</button>
+    <button onclick="sharePost()">Share</button>
+    <button onclick="subscribePost()">Subscribe</button>
+    <button onclick="commentPost()">Komentar</button>
+</div>
+  <script>
+  window.onload = function() {
+    const posts = document.querySelectorAll('.post');
+    const buttonsTemplate = document.getElementById('buttons-template').innerHTML;
+
+    posts.forEach(post => {
+      post.innerHTML += buttonsTemplate;
+    });
+  };
+
+  function downloadPost() {
+    // Fungsi untuk mendownload postingan
+  }
+
+  function copyPost() {
+    // Fungsi untuk menyalin postingan
+  }
+
+  function printPost() {
+    // Fungsi untuk mencetak postingan
+  }
+
+  function likePost() {
+    // Fungsi untuk like postingan
+  }
+
+  function sharePost() {
+    // Fungsi untuk share postingan
+  }
+
+  function subscribePost() {
+    // Fungsi untuk subscribe
+  }
+
+  function commentPost() {
+    // Fungsi untuk menambahkan komentar
+  }
+</script>
 </body>
 </html>
 <section class="post">
@@ -72,6 +131,7 @@
   </p>
   <a href="artikel-opini-judislot.html" class="read-more">Baca Selengkapnya</a>
 </section>
+
 
 
 
