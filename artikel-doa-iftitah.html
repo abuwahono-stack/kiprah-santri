@@ -107,6 +107,65 @@
     <li><a href="https://www.gramedia.com/literasi/doa-iftitah/" target="_blank">Gramedia. Doa Iftitah: Pengertian dan Keutamaannya.</a></li>
     <li><a href="https://www.lemon8-app.com/@mida_mine03/7323731329827357185?region=my" target="_blank">Lemon8 App (2024). Kelebihan Doa Iftitah.</a></li>
   </ol>
+<div class="toolbar">
+      <button onclick="downloadArtikel()">Download</button>
+      <button onclick="salinArtikel()">Salin</button>
+      <button onclick="window.print()">Print</button>
+      <button onclick="likeArtikel()">Like <span id="likeCount" class="like-count">0</span></button>
+      <button onclick="shareArtikel()">Share</button>
+      <button onclick="subscribe()">Subscribe</button>
+    </div>
 
+    <div>
+      <h3>Komentar</h3>
+      <textarea placeholder="Tulis komentar..."></textarea>
+      <button onclick="alert('Komentar terkirim!')">Kirim</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2024 Artikel • Ditulis dengan jiwa, untuk direnungkan.
+  </footer>
+
+  <script>
+    function downloadArtikel() {
+      const text = document.getElementById("artikel").innerText;
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "doa-iftitah.txt";
+      link.click();
+    }
+
+    function salinArtikel() {
+      const text = document.getElementById("artikel").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Artikel berhasil disalin ke clipboard!");
+      });
+    }
+
+    let likes = 0;
+    function likeArtikel() {
+      likes++;
+      document.getElementById("likeCount").innerText = likes;
+    }
+
+    function shareArtikel() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Doa Iftitah: Komitmen Awal Seorang Muslim Sejati",
+          text: "Sebuah deklarasi komitmen seorang Muslim untuk menjadi hamba Allah yang sejati.",
+          url: window.location.href
+        });
+      } else {
+        alert("Fitur share tidak didukung di browser ini.");
+      }
+    }
+
+    function subscribe() {
+      alert("Terima kasih sudah subscribe!");
+    }
+  </script>
 </body>
 </html>
+
