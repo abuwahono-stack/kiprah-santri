@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opini: Ikhtilafu Ummati Rahmatun</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #006699;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .toolbar button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #006699;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .toolbar button:hover {
+      background: #004d66;
+    }
+    .like-count {
+      margin-left: 8px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85em;
+      color: #666;
+      margin: 40px 0;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ikhtilafu Ummati Rahmatun: Sebuah Renungan</h1>
+  </header>
+
+  <main>
+    <article id="artikel">
+      <p>
+        Ungkapan <em>"ikhtilafu ummati rahmatun"</em>, meski statusnya diperdebatkan dalam ranah hadits, telah lama menjadi inspirasi dalam tradisi intelektual Islam. Pernyataan itu kerap dimaknai bahwa perbedaan di antara umat Nabi Muhammad ﷺ merupakan rahmat, bukan kutukan. Perbedaan pandangan, jika ditempatkan dalam bingkai adab dan saling menghargai, seringkali melahirkan keluasan dalam memahami syariat serta memberi kesempatan bagi umat untuk menyesuaikan praktik keagamaannya dengan kondisi yang beragam.
+      </p>
+
+      <p>
+        Dalam realitas keseharian, kita sering menjumpai perbedaan bacaan qunut, variasi cara sholat Id, hingga perbedaan penentuan awal Ramadhan. Bagi sementara orang, perbedaan itu membingungkan bahkan menimbulkan gesekan. Namun bila ditelaah lebih dalam, justru di situlah terdapat pelajaran bahwa agama ini tidak kaku, tetapi hadir untuk mengayomi kebutuhan umat dalam spektrum yang luas.
+      </p>
+
+      <p>
+        Rahmat dalam ikhtilaf bukan berarti semua perbedaan sah tanpa batas. Ia tetap menuntut dasar ilmu, argumentasi yang jernih, dan sikap rendah hati. Tantangan kita hari ini bukan terletak pada ada atau tidaknya perbedaan, melainkan pada cara kita menyikapi perbedaan itu: apakah dengan kebijaksanaan, atau justru dengan permusuhan. Bila kita mampu menempatkan ikhtilaf sebagai ruang belajar, ruang dialog, dan ruang memperkaya pemahaman, maka benar adanya bahwa ikhtilaf bisa menjadi rahmat.
+      </p>
+
+      <p>
+        Pada akhirnya, umat ini bisa belajar dari khazanah pendapat ulama. Mereka berbeda, namun perbedaan itu justru menjaga keluwesan Islam sepanjang zaman. Mungkin inilah pesan yang hendak dititipkan: jangan takut berbeda, karena selama perbedaan itu dijalani dengan tulus, adab, dan cinta kebenaran, ada rahmat yang menyertai.
+      </p>
+    </article>
+
+    <div class="toolbar">
+      <button onclick="downloadArtikel()">Download</button>
+      <button onclick="salinArtikel()">Salin</button>
+      <button onclick="window.print()">Print</button>
+      <button onclick="likeArtikel()">Like <span id="likeCount" class="like-count">0</span></button>
+      <button onclick="shareArtikel()">Share</button>
+      <button onclick="subscribe()">Subscribe</button>
+    </div>
+
+    <div>
+      <h3>Komentar</h3>
+      <textarea placeholder="Tulis komentar..."></textarea>
+      <button>Kirim</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2024 Opini Islami • Ditulis dengan hati, untuk renungan bersama.
+  </footer>
+
+  <script>
+    function downloadArtikel() {
+      const text = document.getElementById("artikel").innerText;
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "ikhtilafu-ummati-rahmatun.txt";
+      link.click();
+    }
+
+    function salinArtikel() {
+      const text = document.getElementById("artikel").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Artikel berhasil disalin ke clipboard!");
+      });
+    }
+
+    let likes = 0;
+    function likeArtikel() {
+      likes++;
+      document.getElementById("likeCount").innerText = likes;
+    }
+
+    function shareArtikel() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Ikhtilafu Ummati Rahmatun",
+          text: "Baca opini menarik tentang ikhtilaf sebagai rahmat.",
+          url: window.location.href
+        });
+      } else {
+        alert("Fitur share tidak didukung di browser ini.");
+      }
+    }
+
+    function subscribe() {
+      alert("Terima kasih sudah subscribe!");
+    }
+  </script>
+</body>
+</html>
